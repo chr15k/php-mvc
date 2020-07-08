@@ -1,0 +1,27 @@
+{
+    "name": "chr15k/php-mvc",
+    "description": "Simple PHP MVC project with Twig templating",
+    "homepage": "https://github.com/chr15k/php-mvc",
+    "require": {
+        "php": "^7.2",
+        "vlucas/phpdotenv": "^5.0",
+        "twig/twig": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chr15k\\Core\\": "core",
+            "Chr15k\\App\\": "app"
+        },
+        "files": [
+            "core/Support/helpers.php"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.2"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Chr15k\\Tests\\": "tests"
+        }
+    }
+}
