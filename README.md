@@ -1,5 +1,7 @@
 # PHP MVC
-Simple PHP MVC with Twig templating.
+PHP MVC with Twig templating.
+
+This is a work in progress, and just a bit of fun :-)
 
 This project has 2 dependencies:
 
@@ -22,6 +24,15 @@ cp .env.example .env
 - App files are in /app directory
 - Add config files to /config
 - Environment variables are in .env
+- Routes are registered in public/index.php
+
+## Todo (while keeping 3rd party packages to a minimum)
+- DB migrations
+- Security considerations
+- More advanced routing options (currently very basic)
+- Needs a routes file (currently registered in public/index.php)
+- Console commands
+- Model functionality
 
 ## License
 The MIT License (MIT). Please see [License File](https://github.com/chr15k/string/blob/master/LICENSE.md) for more information.

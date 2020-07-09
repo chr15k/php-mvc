@@ -91,4 +91,57 @@ class Str
     {
         return $search === '' ? $subject : explode($search, $subject)[0];
     }
+
+    /**
+     * Converts given string to lower case.
+     *
+     * @param  string
+     * @return string
+     */
+    public static function lower(string $value)
+    {
+        return mb_strtolower($value, 'UTF-8');
+    }
+
+    /**
+     * @param  string
+     * @return string
+     */
+    public static function title(string $value)
+    {
+        return mb_convert_case($value, MB_CASE_TITLE, 'UTF-8');
+    }
+
+    /**
+     * @param  string
+     * @return string
+     */
+    public static function ucfirst(string $value)
+    {
+        return static::upper(static::substr($value, 0, 1)).static::substr($value, 1);
+    }
+
+    /**
+     * Converts given string to upper case.
+     *
+     * @param  string
+     * @return string
+     */
+    public static function upper(string $value)
+    {
+        return mb_strtoupper($value, 'UTF-8');
+    }
+
+    /**
+     * Returns the portion of string specified by the start and length parameters.
+     *
+     * @param  string  $string
+     * @param  int  $start
+     * @param  int|null  $length
+     * @return string
+     */
+    public static function substr($string, $start, $length = null)
+    {
+        return mb_substr($string, $start, $length, 'UTF-8');
+    }
 }
