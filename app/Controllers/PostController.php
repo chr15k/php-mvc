@@ -1,8 +1,8 @@
 <?php
 
-namespace Chr15k\App\Controllers;
+namespace App\Controllers;
 
-use Chr15k\App\Models\Post;
+use App\Models\Post;
 use Chr15k\Core\View\View;
 use Chr15k\Core\Routing\Controller;
 
@@ -11,7 +11,7 @@ class PostController extends Controller
     public function indexAction()
     {
         $queries = $this->request->queries;
-
+var_dump($queries); die;
         $posts = Post::all();
 
         View::make('Post/index.html', [

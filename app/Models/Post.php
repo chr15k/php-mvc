@@ -1,6 +1,6 @@
 <?php
 
-namespace Chr15k\App\Models;
+namespace App\Models;
 
 use Chr15k\Core\Database\Model;
 

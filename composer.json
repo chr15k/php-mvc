@@ -10,7 +10,7 @@
     "autoload": {
         "psr-4": {
             "Chr15k\\Core\\": "core",
-            "Chr15k\\App\\": "app"
+            "App\\": "app"
         },
         "files": [
             "core/Support/helpers.php"
@@ -21,7 +21,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Chr15k\\Tests\\": "tests"
+            "Tests\\": "tests"
         }
     }
 }
