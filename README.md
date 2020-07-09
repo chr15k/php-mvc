@@ -132,7 +132,7 @@ class Post extends Model
 }
 ```
 
-There are 2 methods available to models extending the core model as above, these are:
+There are 2 default methods available to models extending the core model as above, these are:
 
 ```php
 Post::all(); // retrieves a listing of all posts.
