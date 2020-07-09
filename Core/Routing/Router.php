@@ -68,7 +68,7 @@ class Router
      */
     private function getBaseControllerNamespace()
     {
-        $namespace = Str::before(__NAMESPACE__, '\\') . '\\App\\Controllers';
+        $namespace = 'App\\Controllers';
 
         if (array_key_exists('namespace', $this->params)) {
             $namespace .= '\\' . $this->params['namespace'];

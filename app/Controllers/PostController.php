@@ -11,7 +11,7 @@ class PostController extends Controller
     public function indexAction()
     {
         $queries = $this->request->queries;
-var_dump($queries); die;
+
         $posts = Post::all();
 
         View::make('Post/index.html', [
