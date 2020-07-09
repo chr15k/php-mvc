@@ -115,7 +115,7 @@ class Router
         $route = preg_replace('/\//', '\\/', $route);
 
         // Convert variables e.g. {id}
-        $route = preg_replace('/\{([^\/]+)\}/', '(?P<\1>[a-z-]+)', $route);
+        $route = preg_replace('/\{([^\/]+)\}/', '(?P<\1>[^\/]+)', $route);
 
         // Start and end delimiters
         $route = '/^' . $route . '$/i';

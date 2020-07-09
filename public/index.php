@@ -31,9 +31,14 @@ $errorHandling->bootstrap();
 */
 $router = new \Chr15k\Core\Routing\Router();
 
-$router->register('/', [
-    'controller' => 'Home',
+$router->register('/posts', [
+    'controller' => 'Post',
     'action'     => 'index'
+]);
+
+$router->register('/posts/{id}', [
+    'controller' => 'Post',
+    'action'     => 'show'
 ]);
 
 $request = new \Chr15k\Core\Http\Request();

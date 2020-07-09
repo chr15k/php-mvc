@@ -7,12 +7,12 @@ use Chr15k\Core\Http\Request;
 
 abstract class Controller
 {
-    protected $routeParams = [];
+    protected $params = [];
     protected $request;
 
-    public function __construct($routeParams, Request $request)
+    public function __construct($params, Request $request)
     {
-        $this->routeParams = $routeParams;
+        $this->params = $params;
         $this->request = $request;
     }
 

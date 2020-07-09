@@ -7,18 +7,26 @@ use Chr15k\Core\Database\Connector;
 
 abstract class Model
 {
-	static $table;
+    static $table;
 
-	public static function all()
-	{
-		$statement = static::db()
-			->query('SELECT * FROM ' . static::$table);
+    public static function all()
+    {
+        $statement = static::db()
+            ->query('SELECT * FROM ' . static::$table);
 
-		return $statement->fetchAll(PDO::FETCH_ASSOC);
-	}
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 
-	public static function db()
-	{
-		return Connector::getInstance();
-	}
+    public static function find($id)
+    {
+        $statement = static::db()
+            ->query('SELECT * FROM ' . static::$table . ' WHERE id  = ' . $id);
+
+        return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public static function db()
+    {
+        return Connector::getInstance();
+    }
 }
