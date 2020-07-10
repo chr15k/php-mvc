@@ -48,7 +48,7 @@ config()->get('database.host');
 // '127.0.0.1'
 ```
 
-The `config()->set()` method sets a value within a deeply nested array using "dot" notation:
+The `config()->set()` method sets a value within a deeply nested array using "dot" notation. Use this method to set config at runtime:
 ```php
 // pass a single key and value
 config()->set('app.debug', 'test');
