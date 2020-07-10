@@ -1,7 +1,7 @@
 # PHP MVC
-PHP MVC with Twig templating.
+Simple PHP MVC with Twig templating.
 
-This is a work in progress, and just a bit of fun :-)
+This is a work in progress, and absolutely isn't a replacement for a proper framework!
 
 This project has 2 dependencies:
 
@@ -24,21 +24,59 @@ cp .env.example .env
 Add config files to /config directory. Then use the `config()` helper to return the array from the file.
 Config files use the `env()` helper which uses `getenv()` to load variables from `.env` file. You can also pass a second argument to `env()` as a default value.
 
-```php
-config('database');
-```
+The `config()->get()` method retrieves a value from a deeply nested array using "dot" notation
 
 ```php
 // config/database.php
+
+config()->get('database');
+
 /*
 [
-    'host' => env('DB_HOST', '127.0.0.1'),
-    'port' => env('DB_PORT', 3306),
-    'name' => env('DB_DATABASE'),
-    'user' => env('DB_USERNAME'),
-    'pass' => env('DB_PASSWORD')
+    'host' => '127.0.0.1',
+    'port' => 3306,
+    'name' => test,
+    'user' => test,
+    'pass' => test
 ];
 /*
+```
+
+```php
+config()->get('database.host');
+
+// '127.0.0.1'
+```
+
+The `config()->set()` method sets a value within a deeply nested array using "dot" notation:
+```php
+// pass a single key and value
+config()->set('app.debug', 'test');
+
+config()->get('app.debug');
+// test
+
+// or pass an array
+config()->set([
+    'app.debug' => 0,
+    'app.foo'   => 'bar'
+]);
+
+config()->get('app');
+
+/*
+[
+    'debug' => 0,
+    'foo'   => 'bar',
+];
+*/
+```
+
+The `config()->has()` method checks whether a given item or items exists in an array using "dot" notation:
+```php
+config()->has('app.debug');
+
+// true
 ```
 
 ## Routing

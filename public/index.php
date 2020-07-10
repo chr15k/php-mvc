@@ -16,6 +16,9 @@ require __DIR__ . '/../vendor/autoload.php';
 */
 \Chr15k\Core\Support\Env::loadDotenv();
 
+config()->set(['app.debug' => 0, 'app.foo' => 'bar']);
+var_dump(config()->get('app')); die;
+
 /*
 |--------------------------------------------------------------------------
 | Bootstrap error handling

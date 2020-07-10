@@ -14,13 +14,9 @@ class View
      */
     public static $instance;
 
-    /**
-     * Disable instantiation.
-     */
-    private function __construct()
-    {
-        //
-    }
+    private function __construct() {}
+    final public function __clone() {}
+    final public function __wakeup() {}
 
     public static function twigEnvironment()
     {
@@ -37,32 +33,12 @@ class View
 
         return new Environment($loader, [
             'cache' => template_cache_path(),
-            'debug' => (bool) config('app')['debug']
+            'debug' => (bool) config()->get('app.debug')
         ]);
     }
 
     public static function make($view, array $args = [])
     {
         echo static::twigEnvironment()->render($view, $args);
-    }
-
-    /**
-     * Disable the cloning of this class.
-     * 
-     * @return void
-     */
-    final public function __clone()
-    {
-        throw new Exception('Feature disabled.');
-    }
-
-    /**
-     * Disable the wakeup of this class.
-     * 
-     * @return void
-     */
-    final public function __wakeup()
-    {
-        throw new Exception('Feature disabled.');
     }
 }

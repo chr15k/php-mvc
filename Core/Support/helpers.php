@@ -106,24 +106,25 @@ if (! function_exists('env')) {
 if (! function_exists('config')) {
 
     /**
-     * Returns the config as an array.
+     * Returns the config instance.
      *
-     * Config files are created in the 'config' directory.
-     *
-     * @param  string $name
-     * @return array
+     * @return Config
      */
-    function config($name)
+    function config()
     {
-        $path = sprintf(
-            "%s.php",
-            merge_paths(root_path(), 'config', $name)
-        );
+        return \Chr15k\Core\Config\Config::getInstance();
+    }
+}
 
-        if (! file_exists($path)) {
-            return [];
-        }
-
-        return include $path;
+if (! function_exists('value')) {
+    /**
+     * Return the default value of the given value.
+     *
+     * @param  mixed  $value
+     * @return mixed
+     */
+    function value($value)
+    {
+        return $value instanceof \Closure ? $value() : $value;
     }
 }

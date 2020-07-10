@@ -20,7 +20,7 @@ class HandleExceptions
 
         set_exception_handler([$this, 'handleException']);
 
-        if (! config('app')['debug']) {
+        if (! config()->get('app.debug')) {
             ini_set('display_errors', 'Off');
         }
     }
@@ -60,7 +60,7 @@ class HandleExceptions
 
         http_response_code($code);
 
-        if (config('app')['debug']) {
+        if (config()->get('app.debug')) {
             echo "<h1>Fatal error</h1>";
             echo "<p>Uncaught exception: '" . get_class($e) . "'</p>";
             echo "<p>Message: '" . $e->getMessage() . "'</p>";
