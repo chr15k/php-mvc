@@ -31,7 +31,7 @@ The `config()->get()` method retrieves a value from a deeply nested array using 
 
 config()->get('database');
 
-/*
+/**
 [
     'host' => '127.0.0.1',
     'port' => 3306,
@@ -39,7 +39,7 @@ config()->get('database');
     'user' => test,
     'pass' => test
 ];
-/*
+*/
 ```
 
 ```php
@@ -64,7 +64,7 @@ config()->set([
 
 config()->get('app');
 
-/*
+/**
 [
     'debug' => 0,
     'foo'   => 'bar',
@@ -127,7 +127,7 @@ Query parameters can be accessed via the `$request` instance in the controller.
 
 var_dump($this->request->queries);
 
-/*
+/**
 	[
 		'id'    => 123,
 		'limit' => 5
