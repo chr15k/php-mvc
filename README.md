@@ -191,6 +191,23 @@ View::make('Post/index.html', [
 ]);
 ```
 
+## Cache
+Cache is stored in `storage/cache/data`
+View cache is stored in `storage/cache/views/`
+
+Get cache:
+```php
+$posts = $this->cache->get($cacheKey);
+```
+
+Set cache:
+```php
+if (! $posts) {
+    $posts = Post::all();
+    $this->cache->set($cacheKey, $posts); 
+}
+```
+
 ## Errors
 If `APP_DEBUG` is set to true in `.env`, a full error detail will be shown in the browser. If set to false, a generic message will be shown using the `app/Views/404.html` or `app/Views/500.html` depending on the error code.
 
