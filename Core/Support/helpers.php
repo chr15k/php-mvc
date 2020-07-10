@@ -67,13 +67,25 @@ if (! function_exists('template_cache_path')) {
      */
     function template_cache_path()
     {
-        return $_SERVER['DOCUMENT_ROOT'] . '/cache';
+        return root_path() . '/storage/cache/views';
+    }
+}
+
+if (! function_exists('cache_path')) {
+    /**
+     * Cache path.
+     *
+     * @return string
+     */
+    function cache_path()
+    {
+        return root_path() . '/storage/cache/data';
     }
 }
 
 if (! function_exists('app_path')) {
     /**
-     * Template storage path.
+     * App path.
      *
      * @return string
      */

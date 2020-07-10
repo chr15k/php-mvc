@@ -12,7 +12,13 @@ class PostController extends Controller
     {
         $queries = $this->request->queries;
 
-        $posts = Post::all();
+        $cacheKey = 'posts_all';
+        $posts = $this->cache->get($cacheKey);
+
+        if (! $posts) {
+            $posts = Post::all();
+            $this->cache->set($cacheKey, $posts); 
+        }
 
         View::make('Post/index.html', [
             'posts'   => $posts,
@@ -25,7 +31,7 @@ class PostController extends Controller
         $post = Post::find($this->params['id']);
 
         View::make('Post/show.html', [
-            'post'  => $post
+            'post' => $post
         ]);
     }
 }

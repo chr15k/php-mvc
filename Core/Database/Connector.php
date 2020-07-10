@@ -24,7 +24,8 @@ class Connector
     public static function getInstance()
     {
         if (is_null(static::$instance)) {
-            $config = config('database');
+            
+            $config = config()->get('database');
 
             $dsn = sprintf(
                 "%s%s%s%s%s%s%s",
