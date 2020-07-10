@@ -192,8 +192,8 @@ View::make('Post/index.html', [
 ```
 
 ## Cache
-Cache is stored in `storage/cache/data`
-View cache is stored in `storage/cache/views/`
+- Cache is stored in `storage/cache/data`
+- View cache is stored in `storage/cache/views/`
 
 Get cache:
 ```php
