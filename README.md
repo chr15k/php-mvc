@@ -195,16 +195,21 @@ View::make('Post/index.html', [
 - Cache is stored in `storage/cache/data`
 - View cache is stored in `storage/cache/views/`
 
+- Cache can be accessed in controllers extending the core controller, using $this->cache.
+
 Get cache:
 ```php
-$posts = $this->cache->get($cacheKey);
+$key = 'posts_all';
+
+$posts = $this->cache->get($key);
 ```
 
-Set cache:
+Set cache by passing a cache key and the value to be stored:
 ```php
 if (! $posts) {
     $posts = Post::all();
-    $this->cache->set($cacheKey, $posts); 
+
+    $this->cache->set($key, $posts); 
 }
 ```
 
