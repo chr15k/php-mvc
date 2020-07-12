@@ -13,18 +13,30 @@ class Connector
      */
     private static $instance;
 
-    /**
-     * Disable instantiation.
-     */
-    private function __construct()
+    private function __construct() {}
+    final public function __clone() {}
+    final public function __wakeup() {}
+
+    public static function __callStatic($method, $args)
     {
-        echo 'Connection created.';
+        return call_user_func_array([static::instance(), $method], $args);
     }
 
-    public static function getInstance()
+    public static function run($sql, $args = [])
+    {
+        if (! $args) {
+            return static::instance()->query($sql);
+        }
+
+        $stmt = static::instance()->prepare($sql);
+        $stmt->execute($args);
+
+        return $stmt;
+    }
+
+    public static function instance()
     {
         if (is_null(static::$instance)) {
-            
             $config = config()->get('database');
 
             $dsn = sprintf(
@@ -38,32 +50,16 @@ class Connector
                 ';charset=utf8'
             );
 
-            static::$instance = new PDO($dsn, $config['user'], $config['pass']);
+            static::$instance = new PDO(
+                $dsn,
+                $config['user'],
+                $config['pass']
+            );
 
             // Throw an Exception when an error occurs
             static::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
 
         return static::$instance;
-    }
-
-    /**
-     * Disable the cloning of this class.
-     * 
-     * @return void
-     */
-    final public function __clone()
-    {
-        throw new Exception('Feature disabled.');
-    }
-
-    /**
-     * Disable the wakeup of this class.
-     * 
-     * @return void
-     */
-    final public function __wakeup()
-    {
-        throw new Exception('Feature disabled.');
     }
 }

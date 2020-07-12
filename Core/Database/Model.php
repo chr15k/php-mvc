@@ -3,30 +3,23 @@
 namespace Chr15k\Core\Database;
 
 use PDO;
-use Chr15k\Core\Database\Connector;
+use Chr15k\Core\Database\Connector as DB;
 
 abstract class Model
 {
-    static $table;
+    protected static $table;
 
     public static function all()
     {
-        $statement = static::db()
-            ->query('SELECT * FROM ' . static::$table);
+        $statement = DB::run('SELECT * FROM ' . static::$table);
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function find($id)
     {
-        $statement = static::db()
-            ->query('SELECT * FROM ' . static::$table . ' WHERE id  = ' . $id);
+        $statement = DB::run('SELECT * FROM ' . static::$table . ' WHERE id  = ' . $id);
 
         return $statement->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public static function db()
-    {
-        return Connector::getInstance();
     }
 }
